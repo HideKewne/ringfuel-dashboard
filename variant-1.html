@@ -30,25 +30,7 @@
     <nav class="top-nav">
         <div class="nav-left">
             <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="18" fill="url(#fuelGradient)" stroke="var(--primary-teal)" stroke-width="2"/>
-                        <path d="M20 8C20 8 14 16 14 22C14 25.314 16.686 28 20 28C23.314 28 26 25.314 26 22C26 16 20 8 20 8Z" fill="url(#flameGradient)"/>
-                        <path d="M20 14C20 14 17 18 17 21C17 22.657 18.343 24 20 24C21.657 24 23 22.657 23 21C23 18 20 14 20 14Z" fill="rgba(255,255,255,0.8)"/>
-                        <defs>
-                            <linearGradient id="fuelGradient" x1="0" y1="0" x2="40" y2="40">
-                                <stop offset="0%" stop-color="#0F1320"/>
-                                <stop offset="100%" stop-color="#161C2D"/>
-                            </linearGradient>
-                            <linearGradient id="flameGradient" x1="20" y1="8" x2="20" y2="28">
-                                <stop offset="0%" stop-color="#FF6B2B"/>
-                                <stop offset="50%" stop-color="#29B6A8"/>
-                                <stop offset="100%" stop-color="#2C5FA8"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <span class="logo-text">Ring<span class="accent">Fuel</span></span>
+                <img src="images/ringfuel-logo.png" alt="RingFuel" class="logo-img">
             </div>
         </div>
 
@@ -82,12 +64,13 @@
 
         <div class="nav-right">
             <div class="mode-indicator">
+                <svg class="mode-bolt" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 <span class="mode-label" id="modeLabel">Standby</span>
             </div>
             <div class="time" id="currentTime"></div>
             <div class="user-profile">
                 <span class="user-name">Michael Gustin</span>
-                <div class="user-avatar">MG</div>
+                <div class="user-avatar"><img src="images/michael-gustin.jpg" alt="MG" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
             </div>
         </div>
     </nav>
@@ -102,29 +85,62 @@
                     <span class="reactor-mode-label" id="reactorModeLabel">OFF / STANDBY</span>
                 </div>
                 <div class="reactor-button">
+                    <!-- Atom ring - large circle engulfing orbital rings -->
+                    <div class="atom-ring"></div>
+                    <!-- Scattered star particles (visible in dark mode) -->
+                    <div class="particle-field">
+                        <div class="star" style="top:8%;left:12%;animation-delay:0s"></div>
+                        <div class="star" style="top:15%;left:78%;animation-delay:1.2s"></div>
+                        <div class="star" style="top:22%;left:35%;animation-delay:0.5s"></div>
+                        <div class="star" style="top:5%;left:55%;animation-delay:2.1s"></div>
+                        <div class="star" style="top:30%;left:88%;animation-delay:0.8s"></div>
+                        <div class="star" style="top:72%;left:10%;animation-delay:1.7s"></div>
+                        <div class="star" style="top:80%;left:85%;animation-delay:0.3s"></div>
+                        <div class="star" style="top:88%;left:42%;animation-delay:2.5s"></div>
+                        <div class="star" style="top:65%;left:92%;animation-delay:1.1s"></div>
+                        <div class="star" style="top:92%;left:18%;animation-delay:0.6s"></div>
+                        <div class="star" style="top:10%;left:92%;animation-delay:1.9s"></div>
+                        <div class="star" style="top:45%;left:5%;animation-delay:2.8s"></div>
+                        <div class="star" style="top:55%;left:95%;animation-delay:0.2s"></div>
+                        <div class="star" style="top:35%;left:8%;animation-delay:1.5s"></div>
+                        <div class="star" style="top:95%;left:65%;animation-delay:3.1s"></div>
+                        <div class="star" style="top:3%;left:30%;animation-delay:2.3s"></div>
+                        <div class="star" style="top:18%;left:6%;animation-delay:0.9s"></div>
+                        <div class="star" style="top:78%;left:70%;animation-delay:1.4s"></div>
+                        <div class="star" style="top:42%;left:93%;animation-delay:2.7s"></div>
+                        <div class="star" style="top:85%;left:55%;animation-delay:0.4s"></div>
+                        <div class="star lg" style="top:12%;left:45%;animation-delay:1.6s"></div>
+                        <div class="star lg" style="top:75%;left:25%;animation-delay:2.0s"></div>
+                        <div class="star lg" style="top:60%;left:80%;animation-delay:0.7s"></div>
+                        <div class="star lg" style="top:90%;left:75%;animation-delay:1.3s"></div>
+                    </div>
                     <!-- Orbital Rings (visible in dark/fueled mode) -->
                     <div class="orbital-system">
                         <div class="orbital-ring ring-1">
+                            <div class="particle"></div>
                             <div class="particle"></div>
                             <div class="particle"></div>
                         </div>
                         <div class="orbital-ring ring-2">
                             <div class="particle"></div>
                             <div class="particle"></div>
+                            <div class="particle"></div>
                         </div>
                         <div class="orbital-ring ring-3">
                             <div class="particle"></div>
                             <div class="particle"></div>
+                            <div class="particle"></div>
                         </div>
                     </div>
-                    <!-- Core hexagon -->
+                    <!-- Reactor Core SVG -->
                     <svg viewBox="0 0 120 120" class="reactor-core-svg">
                         <defs>
                             <radialGradient id="coreGlowOn" cx="50%" cy="50%" r="50%">
                                 <stop offset="0%" stop-color="#FFFFFF"/>
-                                <stop offset="20%" stop-color="#EAFFF8"/>
-                                <stop offset="40%" stop-color="#29B6A8"/>
-                                <stop offset="70%" stop-color="#1F9A8E"/>
+                                <stop offset="15%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                                <stop offset="30%" stop-color="#B0F0E8"/>
+                                <stop offset="50%" stop-color="#29B6A8" stop-opacity="0.7"/>
+                                <stop offset="75%" stop-color="#1F9A8E" stop-opacity="0.3"/>
                                 <stop offset="100%" stop-color="transparent"/>
                             </radialGradient>
                             <radialGradient id="coreGlowOff" cx="50%" cy="50%" r="50%">
@@ -133,27 +149,44 @@
                                 <stop offset="100%" stop-color="#808080"/>
                             </radialGradient>
                             <filter id="coreBlur">
-                                <feGaussianBlur stdDeviation="3"/>
+                                <feGaussianBlur stdDeviation="4"/>
+                            </filter>
+                            <filter id="softGlow">
+                                <feGaussianBlur stdDeviation="6"/>
                             </filter>
                         </defs>
-                        <!-- Outer containment ring -->
-                        <circle cx="60" cy="60" r="55" class="containment-ring" fill="none" stroke-width="1.5"/>
-                        <circle cx="60" cy="60" r="48" class="containment-ring-inner" fill="none" stroke-width="0.5"/>
-                        <!-- Hexagonal core -->
-                        <polygon points="60,20 94,40 94,80 60,100 26,80 26,40" class="hex-core" stroke-width="1.5" fill="none"/>
-                        <polygon points="60,30 84,45 84,75 60,90 36,75 36,45" class="hex-inner" stroke-width="1" fill="none"/>
-                        <!-- Center glow -->
-                        <circle cx="60" cy="60" r="22" class="core-glow"/>
-                        <circle cx="60" cy="60" r="12" class="core-center"/>
-                        <!-- Radial lines -->
-                        <line x1="60" y1="5" x2="60" y2="15" class="radial-line"/>
-                        <line x1="60" y1="105" x2="60" y2="115" class="radial-line"/>
-                        <line x1="5" y1="60" x2="15" y2="60" class="radial-line"/>
-                        <line x1="105" y1="60" x2="115" y2="60" class="radial-line"/>
-                        <line x1="15" y1="15" x2="23" y2="23" class="radial-line"/>
-                        <line x1="97" y1="97" x2="105" y2="105" class="radial-line"/>
-                        <line x1="97" y1="15" x2="105" y2="23" class="radial-line-alt"/>
-                        <line x1="15" y1="97" x2="23" y2="105" class="radial-line-alt"/>
+                        <!-- Outer containment rings -->
+                        <circle cx="60" cy="60" r="58" class="containment-ring-outer" fill="none" stroke-width="0.5" stroke-dasharray="2 6"/>
+                        <circle cx="60" cy="60" r="55" class="containment-ring" fill="none" stroke-width="1"/>
+                        <circle cx="60" cy="60" r="48" class="containment-ring-inner" fill="none" stroke-width="0.5" stroke-dasharray="4 4"/>
+                        <!-- Ambient glow (behind cube) -->
+                        <circle cx="60" cy="60" r="32" class="core-glow" filter="url(#softGlow)"/>
+                        <!-- Atom ring - bright circle around outer containment -->
+                                                <!-- 3D Isometric Cube - Right face -->
+                        <path d="M60,36 L82,48 L82,72 L60,84 Z" class="cube-face cube-right"/>
+                        <!-- 3D Isometric Cube - Left face -->
+                        <path d="M60,36 L38,48 L38,72 L60,84 Z" class="cube-face cube-left"/>
+                        <!-- 3D Isometric Cube - Top face -->
+                        <path d="M60,36 L82,48 L60,60 L38,48 Z" class="cube-face cube-top"/>
+                        <!-- Grid lines on right face -->
+                        <line x1="60" y1="52" x2="82" y2="64" class="cube-grid"/>
+                        <line x1="60" y1="68" x2="82" y2="56" class="cube-grid"/>
+                        <line x1="71" y1="42" x2="71" y2="78" class="cube-grid"/>
+                        <!-- Grid lines on left face -->
+                        <line x1="60" y1="52" x2="38" y2="64" class="cube-grid"/>
+                        <line x1="60" y1="68" x2="38" y2="56" class="cube-grid"/>
+                        <line x1="49" y1="42" x2="49" y2="78" class="cube-grid"/>
+                        <!-- Grid lines on top face -->
+                        <line x1="49" y1="42" x2="71" y2="54" class="cube-grid"/>
+                        <line x1="49" y1="54" x2="71" y2="42" class="cube-grid"/>
+                        <!-- Cube edges (bright) -->
+                        <path d="M60,36 L82,48 L82,72 L60,84 L38,72 L38,48 Z" class="cube-edge" fill="none" stroke-width="1.5"/>
+                        <line x1="60" y1="36" x2="60" y2="60" class="cube-edge-inner"/>
+                        <line x1="60" y1="60" x2="82" y2="48" class="cube-edge-inner"/>
+                        <line x1="60" y1="60" x2="38" y2="48" class="cube-edge-inner"/>
+                        <line x1="60" y1="60" x2="60" y2="84" class="cube-edge-inner"/>
+                        <!-- Center bright glow -->
+                        <circle cx="60" cy="60" r="14" class="core-center"/>
                     </svg>
                 </div>
                 <div class="status-indicator">
@@ -166,11 +199,11 @@
 
         <!-- Floating Stats Cards - 4 Corners -->
         <div class="floating-stats">
-            <div class="source-card float-top-left online">
+            <div class="source-card float-top-left">
                 <div class="source-header">
                     <div class="source-status-dot"></div>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -178,11 +211,11 @@
                 <div class="source-label">Search / PPC Leads</div>
             </div>
 
-            <div class="source-card float-top-right online">
+            <div class="source-card float-top-right">
                 <div class="source-header">
                     <div class="source-status-dot"></div>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -190,28 +223,28 @@
                 <div class="source-label">Social Media</div>
             </div>
 
-            <div class="source-card float-bottom-left online">
+            <div class="source-card float-bottom-left">
                 <div class="source-header">
                     <div class="source-status-dot"></div>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-                <div class="source-name">Cold Calls</div>
-                <div class="source-label">Outbound</div>
+                <div class="source-name">Live Transfers</div>
+                <div class="source-label">Call Center</div>
             </div>
 
-            <div class="source-card float-bottom-right online">
+            <div class="source-card float-bottom-right">
                 <div class="source-header">
                     <div class="source-status-dot"></div>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-                <div class="source-name">Referrals</div>
-                <div class="source-label">Word of Mouth</div>
+                <div class="source-name">Instagram Leads</div>
+                <div class="source-label">Social Media</div>
             </div>
         </div>
 
@@ -268,24 +301,24 @@
                     <p class="tab-description">Manage your active lead sources. Changes sync with your dashboard.</p>
                     <div class="source-rows">
                         <div class="source-row" data-source="0">
-                            <div class="source-row-dot online"></div>
+                            <div class="source-row-dot"></div>
                             <div class="source-row-info"><span class="source-row-name">Google Ads</span><span class="source-row-label">Search / PPC Leads</span></div>
-                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
                         </div>
                         <div class="source-row" data-source="1">
-                            <div class="source-row-dot online"></div>
+                            <div class="source-row-dot"></div>
                             <div class="source-row-info"><span class="source-row-name">Facebook Leads</span><span class="source-row-label">Social Media</span></div>
-                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
                         </div>
                         <div class="source-row" data-source="2">
-                            <div class="source-row-dot online"></div>
-                            <div class="source-row-info"><span class="source-row-name">Cold Calls</span><span class="source-row-label">Outbound</span></div>
-                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            <div class="source-row-dot"></div>
+                            <div class="source-row-info"><span class="source-row-name">Live Transfers</span><span class="source-row-label">Call Center</span></div>
+                            <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
                         </div>
                         <div class="source-row" data-source="3">
-                            <div class="source-row-dot online"></div>
-                            <div class="source-row-info"><span class="source-row-name">Referrals</span><span class="source-row-label">Word of Mouth</span></div>
-                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                            <div class="source-row-dot"></div>
+                            <div class="source-row-info"><span class="source-row-name">Instagram Leads</span><span class="source-row-label">Social Media</span></div>
+                            <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
                         </div>
                     </div>
                     <div class="settings-actions"><button class="save-button">Save Changes</button></div>
@@ -361,58 +394,58 @@
         <!-- Leaderboard Panel (Right Side) -->
         <aside class="leaderboard-panel">
             <div class="panel-header">
-                <h3>Top Performers</h3>
                 <svg class="trophy-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M5 3h14c.55 0 1 .45 1 1v3c0 2.21-1.79 4-4 4h-.1c-.46 1.64-1.89 2.88-3.65 3.16V17h4v2H7v-2h4v-2.84c-1.76-.28-3.19-1.52-3.65-3.16H7c-2.21 0-4-1.79-4-4V4c0-.55.45-1 1-1zm0 2v2c0 1.1.9 2 2 2h.28c-.04-.16-.07-.33-.07-.5V5H5zm14 0h-2.21v3.5c0 .17-.03.34-.07.5H17c1.1 0 2-.9 2-2V5zM9 5v3.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5H9z"/>
                 </svg>
+                <h3>Top Performers</h3>
             </div>
             <div class="leaderboard-list">
                 <div class="leaderboard-item rank-1">
+                    <div class="agent-avatar"><img src="images/joe-vazquez.jpg" alt="JV"></div>
                     <span class="rank">#1</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=3" alt="JV"></div>
-                    <div class="agent-info"><span class="agent-name">Joe Vazquez</span><span class="agent-stats">156 calls ~ $12,400</span></div>
+                    <div class="agent-info"><span class="agent-name">Joe Vazquez</span><span class="agent-stats">156 calls</span></div>
                     <span class="agent-revenue">$12,400</span>
                 </div>
-                <div class="leaderboard-item">
+                <div class="leaderboard-item rank-2">
+                    <div class="agent-avatar"><img src="images/cole-bingham.jpg" alt="CB"></div>
                     <span class="rank">#2</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=8" alt="CB"></div>
-                    <div class="agent-info"><span class="agent-name">Cole Bingham</span><span class="agent-stats">134 calls ~ $10,200</span></div>
+                    <div class="agent-info"><span class="agent-name">Cole Bingham</span><span class="agent-stats">134 calls</span></div>
                     <span class="agent-revenue">$10,200</span>
                 </div>
-                <div class="leaderboard-item">
+                <div class="leaderboard-item rank-3">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=5" alt="AM"></div>
                     <span class="rank">#3</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=5" alt="AM"></div>
-                    <div class="agent-info"><span class="agent-name">Anne Mitchell</span><span class="agent-stats">121 calls ~ $9,800</span></div>
+                    <div class="agent-info"><span class="agent-name">Anne Mitchell</span><span class="agent-stats">121 calls</span></div>
                     <span class="agent-revenue">$9,800</span>
                 </div>
                 <div class="leaderboard-item">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=12" alt="MC"></div>
                     <span class="rank">#4</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=12" alt="MC"></div>
-                    <div class="agent-info"><span class="agent-name">Marcus Chen</span><span class="agent-stats">108 calls ~ $8,500</span></div>
+                    <div class="agent-info"><span class="agent-name">Marcus Chen</span><span class="agent-stats">108 calls</span></div>
                     <span class="agent-revenue">$8,500</span>
                 </div>
                 <div class="leaderboard-item">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=9" alt="SW"></div>
                     <span class="rank">#5</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=9" alt="SW"></div>
-                    <div class="agent-info"><span class="agent-name">Sarah Williams</span><span class="agent-stats">95 calls ~ $7,200</span></div>
+                    <div class="agent-info"><span class="agent-name">Sarah Williams</span><span class="agent-stats">95 calls</span></div>
                     <span class="agent-revenue">$7,200</span>
                 </div>
                 <div class="leaderboard-item">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=15" alt="DP"></div>
                     <span class="rank">#6</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=15" alt="DP"></div>
-                    <div class="agent-info"><span class="agent-name">David Park</span><span class="agent-stats">87 calls ~ $6,800</span></div>
+                    <div class="agent-info"><span class="agent-name">David Park</span><span class="agent-stats">87 calls</span></div>
                     <span class="agent-revenue">$6,800</span>
                 </div>
                 <div class="leaderboard-item">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=25" alt="ER"></div>
                     <span class="rank">#7</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=25" alt="ER"></div>
-                    <div class="agent-info"><span class="agent-name">Emma Rodriguez</span><span class="agent-stats">79 calls ~ $5,900</span></div>
+                    <div class="agent-info"><span class="agent-name">Emma Rodriguez</span><span class="agent-stats">79 calls</span></div>
                     <span class="agent-revenue">$5,900</span>
                 </div>
                 <div class="leaderboard-item">
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/44?img=53" alt="MT"></div>
                     <span class="rank">#8</span>
-                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=53" alt="MT"></div>
-                    <div class="agent-info"><span class="agent-name">Michael Torres</span><span class="agent-stats">72 calls ~ $5,400</span></div>
+                    <div class="agent-info"><span class="agent-name">Michael Torres</span><span class="agent-stats">72 calls</span></div>
                     <span class="agent-revenue">$5,400</span>
                 </div>
             </div>

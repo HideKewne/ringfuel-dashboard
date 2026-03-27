@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modeTarget = document.getElementById('modeTarget');
     const callModal = document.getElementById('callModal');
     const acceptBtn = document.getElementById('acceptCall');
+    const reactorModeLabel = document.getElementById('reactorModeLabel');
 
     // Update time display
     function updateTime() {
@@ -24,8 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTime();
     setInterval(updateTime, 1000);
 
-    // Update mode indicator text
-    const reactorModeLabel = document.getElementById('reactorModeLabel');
+    // Source cards and toggles
+    const sourceCards = document.querySelectorAll('.source-card');
+    const dashboardToggles = document.querySelectorAll('.floating-stats .toggle-switch input');
+    const settingsToggles = document.querySelectorAll('.source-row .toggle-switch input');
 
     function updateModeUI() {
         const isDark = document.body.classList.contains('dark-mode');
@@ -34,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (reactorModeLabel) reactorModeLabel.textContent = isDark ? 'ON / FUELED' : 'OFF / STANDBY';
     }
 
-    // Update status indicator with delay for smooth transition
     function updateStatusIndicator(goingOnline) {
         const statusIndicator = document.querySelector('.status-indicator');
         const statusText = document.querySelector('.status-text');
@@ -50,25 +52,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     }
 
-    // Reactor Toggle - Light/Dark Mode Switch
+    // Switch site to online (dark mode) or offline (light mode)
+    function setSiteMode(goOnline) {
+        const isCurrentlyDark = document.body.classList.contains('dark-mode');
+        if (goOnline === isCurrentlyDark) return; // Already in the right mode
+
+        document.body.classList.add('transitioning');
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+
+        updateModeUI();
+        updateStatusIndicator(goOnline);
+
+        setTimeout(() => {
+            document.body.classList.remove('transitioning');
+        }, 800);
+    }
+
+    // Sync a single source card state
+    function syncSourceState(index, isOn) {
+        if (sourceCards[index]) {
+            sourceCards[index].classList.toggle('online', isOn);
+        }
+        if (dashboardToggles[index]) dashboardToggles[index].checked = isOn;
+        if (settingsToggles[index]) settingsToggles[index].checked = isOn;
+
+        // Sync settings dot
+        const settingsDots = document.querySelectorAll('.source-row-dot');
+        if (settingsDots[index]) {
+            settingsDots[index].classList.toggle('online', isOn);
+        }
+    }
+
+    // Check if any card is on, and update site mode accordingly
+    function checkAndUpdateSiteMode() {
+        const anyOn = Array.from(dashboardToggles).some(t => t.checked);
+        setSiteMode(anyOn);
+    }
+
+    // Set all 4 cards on or off
+    function setAllCards(on) {
+        for (let i = 0; i < sourceCards.length; i++) {
+            syncSourceState(i, on);
+        }
+    }
+
+    // Reactor Toggle - toggles all cards + site mode
     if (reactorToggle) {
         reactorToggle.addEventListener('click', function() {
-            document.body.classList.add('transitioning');
-            document.body.classList.toggle('dark-mode');
-            document.body.classList.toggle('light-mode');
+            const isCurrentlyOnline = document.body.classList.contains('dark-mode');
+            const goOnline = !isCurrentlyOnline;
 
-            const goingOnline = document.body.classList.contains('dark-mode');
-            updateModeUI();
-            updateStatusIndicator(goingOnline);
+            setAllCards(goOnline);
+            setSiteMode(goOnline);
 
-            setTimeout(() => {
-                document.body.classList.remove('transitioning');
-            }, 800);
-
-            const mode = document.body.classList.contains('dark-mode') ? 'Fueled' : 'Standby';
+            const mode = goOnline ? 'Fueled' : 'Standby';
             console.log(`Switched to ${mode} Mode`);
         });
     }
+
+    // Individual card toggles - toggle card and check site mode
+    dashboardToggles.forEach((toggle, i) => {
+        toggle.addEventListener('change', () => {
+            syncSourceState(i, toggle.checked);
+            checkAndUpdateSiteMode();
+        });
+    });
+
+    settingsToggles.forEach((toggle, i) => {
+        toggle.addEventListener('change', () => {
+            syncSourceState(i, toggle.checked);
+            checkAndUpdateSiteMode();
+        });
+    });
 
     updateModeUI();
 
@@ -91,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (e.key === 'Escape') {
             if (callModal) callModal.classList.remove('active');
-            // Close settings if open
             const settingsPage = document.getElementById('settingsPage');
             if (settingsPage && settingsPage.style.display !== 'none') {
                 settingsPage.style.display = 'none';
@@ -137,33 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetPanel = document.getElementById(`panel-${targetTab}`);
             if (targetPanel) targetPanel.style.display = '';
         });
-    });
-
-    // Source toggle sync between dashboard cards and settings
-    const dashboardToggles = document.querySelectorAll('.floating-stats .toggle-switch input');
-    const settingsToggles = document.querySelectorAll('.source-row .toggle-switch input');
-    const sourceCards = document.querySelectorAll('.source-card');
-
-    function syncSourceState(index, isOn) {
-        if (sourceCards[index]) {
-            sourceCards[index].classList.toggle('online', isOn);
-        }
-        if (dashboardToggles[index]) dashboardToggles[index].checked = isOn;
-        if (settingsToggles[index]) settingsToggles[index].checked = isOn;
-
-        // Sync settings dot
-        const settingsDots = document.querySelectorAll('.source-row-dot');
-        if (settingsDots[index]) {
-            settingsDots[index].classList.toggle('online', isOn);
-        }
-    }
-
-    dashboardToggles.forEach((toggle, i) => {
-        toggle.addEventListener('change', () => syncSourceState(i, toggle.checked));
-    });
-
-    settingsToggles.forEach((toggle, i) => {
-        toggle.addEventListener('change', () => syncSourceState(i, toggle.checked));
     });
 
     // State License Grid
