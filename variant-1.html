@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RingFuel Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variant-1.css">
+</head>
+<body class="light-mode">
+    <!-- Background Container -->
+    <div class="bg-container">
+        <!-- Light mode shapes -->
+        <div class="bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <!-- Dark mode energy field -->
+        <div class="energy-background">
+            <div class="energy-gradient"></div>
+            <div class="energy-pulse"></div>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" fill="url(#fuelGradient)" stroke="var(--primary-teal)" stroke-width="2"/>
+                        <path d="M20 8C20 8 14 16 14 22C14 25.314 16.686 28 20 28C23.314 28 26 25.314 26 22C26 16 20 8 20 8Z" fill="url(#flameGradient)"/>
+                        <path d="M20 14C20 14 17 18 17 21C17 22.657 18.343 24 20 24C21.657 24 23 22.657 23 21C23 18 20 14 20 14Z" fill="rgba(255,255,255,0.8)"/>
+                        <defs>
+                            <linearGradient id="fuelGradient" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#0F1320"/>
+                                <stop offset="100%" stop-color="#161C2D"/>
+                            </linearGradient>
+                            <linearGradient id="flameGradient" x1="20" y1="8" x2="20" y2="28">
+                                <stop offset="0%" stop-color="#FF6B2B"/>
+                                <stop offset="50%" stop-color="#29B6A8"/>
+                                <stop offset="100%" stop-color="#2C5FA8"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Ring<span class="accent">Fuel</span></span>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <a href="#" class="nav-link active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                Calls
+            </a>
+            <a href="#" class="nav-link">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                Leaderboard
+            </a>
+            <a href="#" class="nav-link">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+                Billing
+            </a>
+            <a href="#" class="nav-link" id="settingsNavLink">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                </svg>
+                Settings
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <div class="mode-indicator">
+                <span class="mode-label" id="modeLabel">Standby</span>
+            </div>
+            <div class="time" id="currentTime"></div>
+            <div class="user-profile">
+                <span class="user-name">Michael Gustin</span>
+                <div class="user-avatar">MG</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Center Section - Reactor Core -->
+        <section class="reactor-center">
+            <div class="reactor-container" id="reactorToggle">
+                <div class="reactor-title">
+                    <h2 class="reactor-heading">THE REACTOR CORE</h2>
+                    <span class="reactor-mode-label" id="reactorModeLabel">OFF / STANDBY</span>
+                </div>
+                <div class="reactor-button">
+                    <!-- Orbital Rings (visible in dark/fueled mode) -->
+                    <div class="orbital-system">
+                        <div class="orbital-ring ring-1">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                        <div class="orbital-ring ring-2">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                        <div class="orbital-ring ring-3">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+                    <!-- Core hexagon -->
+                    <svg viewBox="0 0 120 120" class="reactor-core-svg">
+                        <defs>
+                            <radialGradient id="coreGlowOn" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#FFFFFF"/>
+                                <stop offset="20%" stop-color="#EAFFF8"/>
+                                <stop offset="40%" stop-color="#29B6A8"/>
+                                <stop offset="70%" stop-color="#1F9A8E"/>
+                                <stop offset="100%" stop-color="transparent"/>
+                            </radialGradient>
+                            <radialGradient id="coreGlowOff" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#E8E8E8"/>
+                                <stop offset="50%" stop-color="#B0B0B0"/>
+                                <stop offset="100%" stop-color="#808080"/>
+                            </radialGradient>
+                            <filter id="coreBlur">
+                                <feGaussianBlur stdDeviation="3"/>
+                            </filter>
+                        </defs>
+                        <!-- Outer containment ring -->
+                        <circle cx="60" cy="60" r="55" class="containment-ring" fill="none" stroke-width="1.5"/>
+                        <circle cx="60" cy="60" r="48" class="containment-ring-inner" fill="none" stroke-width="0.5"/>
+                        <!-- Hexagonal core -->
+                        <polygon points="60,20 94,40 94,80 60,100 26,80 26,40" class="hex-core" stroke-width="1.5" fill="none"/>
+                        <polygon points="60,30 84,45 84,75 60,90 36,75 36,45" class="hex-inner" stroke-width="1" fill="none"/>
+                        <!-- Center glow -->
+                        <circle cx="60" cy="60" r="22" class="core-glow"/>
+                        <circle cx="60" cy="60" r="12" class="core-center"/>
+                        <!-- Radial lines -->
+                        <line x1="60" y1="5" x2="60" y2="15" class="radial-line"/>
+                        <line x1="60" y1="105" x2="60" y2="115" class="radial-line"/>
+                        <line x1="5" y1="60" x2="15" y2="60" class="radial-line"/>
+                        <line x1="105" y1="60" x2="115" y2="60" class="radial-line"/>
+                        <line x1="15" y1="15" x2="23" y2="23" class="radial-line"/>
+                        <line x1="97" y1="97" x2="105" y2="105" class="radial-line"/>
+                        <line x1="97" y1="15" x2="105" y2="23" class="radial-line-alt"/>
+                        <line x1="15" y1="97" x2="23" y2="105" class="radial-line-alt"/>
+                    </svg>
+                </div>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">OFFLINE</span>
+                </div>
+                <p class="hero-subtitle">Click the core to enter <span id="modeTarget">fueled</span> mode</p>
+            </div>
+        </section>
+
+        <!-- Floating Stats Cards - 4 Corners -->
+        <div class="floating-stats">
+            <div class="source-card float-top-left online">
+                <div class="source-header">
+                    <div class="source-status-dot"></div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="source-name">Google Ads</div>
+                <div class="source-label">Search / PPC Leads</div>
+            </div>
+
+            <div class="source-card float-top-right online">
+                <div class="source-header">
+                    <div class="source-status-dot"></div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="source-name">Facebook Leads</div>
+                <div class="source-label">Social Media</div>
+            </div>
+
+            <div class="source-card float-bottom-left online">
+                <div class="source-header">
+                    <div class="source-status-dot"></div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="source-name">Cold Calls</div>
+                <div class="source-label">Outbound</div>
+            </div>
+
+            <div class="source-card float-bottom-right online">
+                <div class="source-header">
+                    <div class="source-status-dot"></div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="source-name">Referrals</div>
+                <div class="source-label">Word of Mouth</div>
+            </div>
+        </div>
+
+        <!-- Settings Page (hidden by default) -->
+        <section class="settings-page" id="settingsPage" style="display: none;">
+            <div class="settings-card">
+                <div class="settings-header">
+                    <button class="back-button" id="backToDashboard">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back to Dashboard
+                    </button>
+                    <h1>Settings</h1>
+                    <p>Manage your account preferences</p>
+                </div>
+
+                <div class="settings-tabs">
+                    <button class="settings-tab active" data-tab="profile">
+                        <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                        <span class="tab-label">Profile</span>
+                    </button>
+                    <button class="settings-tab" data-tab="sources">
+                        <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+                        <span class="tab-label">Sources</span>
+                    </button>
+                    <button class="settings-tab" data-tab="licenses">
+                        <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                        <span class="tab-label">Licenses</span>
+                    </button>
+                    <button class="settings-tab" data-tab="billing">
+                        <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                        <span class="tab-label">Billing</span>
+                    </button>
+                    <button class="settings-tab" data-tab="notifications">
+                        <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span>
+                        <span class="tab-label">Notifications</span>
+                    </button>
+                </div>
+
+                <!-- Profile Tab -->
+                <div class="settings-tab-panel" id="panel-profile">
+                    <h2>Profile Information</h2>
+                    <div class="profile-info">
+                        <div class="info-row"><label>Full Name</label><span>Michael Gustin</span></div>
+                        <div class="info-row"><label>Email</label><span>michael@ringfuel.com</span></div>
+                        <div class="info-row"><label>Balance</label><span class="balance-value">$125.00</span></div>
+                        <div class="info-row"><label>Status</label><span class="status-badge online">ONLINE</span></div>
+                    </div>
+                    <button class="danger-button">Sign Out</button>
+                </div>
+
+                <!-- Sources Tab -->
+                <div class="settings-tab-panel" id="panel-sources" style="display: none;">
+                    <h2>Lead Sources</h2>
+                    <p class="tab-description">Manage your active lead sources. Changes sync with your dashboard.</p>
+                    <div class="source-rows">
+                        <div class="source-row" data-source="0">
+                            <div class="source-row-dot online"></div>
+                            <div class="source-row-info"><span class="source-row-name">Google Ads</span><span class="source-row-label">Search / PPC Leads</span></div>
+                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="source-row" data-source="1">
+                            <div class="source-row-dot online"></div>
+                            <div class="source-row-info"><span class="source-row-name">Facebook Leads</span><span class="source-row-label">Social Media</span></div>
+                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="source-row" data-source="2">
+                            <div class="source-row-dot online"></div>
+                            <div class="source-row-info"><span class="source-row-name">Cold Calls</span><span class="source-row-label">Outbound</span></div>
+                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="source-row" data-source="3">
+                            <div class="source-row-dot online"></div>
+                            <div class="source-row-info"><span class="source-row-name">Referrals</span><span class="source-row-label">Word of Mouth</span></div>
+                            <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                        </div>
+                    </div>
+                    <div class="settings-actions"><button class="save-button">Save Changes</button></div>
+                </div>
+
+                <!-- Licenses Tab -->
+                <div class="settings-tab-panel" id="panel-licenses" style="display: none;">
+                    <h2>State Licenses</h2>
+                    <p class="tab-description">Select the states where you are licensed to operate.</p>
+                    <div class="license-selector">
+                        <div class="license-header">
+                            <input type="text" class="license-search" placeholder="Search states..." id="stateSearch">
+                            <div class="license-actions-bar">
+                                <button class="license-action-btn" id="selectAllStates">Select All</button>
+                                <button class="license-action-btn" id="clearStates">Clear</button>
+                            </div>
+                        </div>
+                        <div class="license-count"><span id="stateCount">5</span> states selected</div>
+                        <div class="state-grid" id="stateGrid"></div>
+                    </div>
+                    <div class="settings-actions"><button class="save-button">Save Changes</button></div>
+                </div>
+
+                <!-- Billing Tab -->
+                <div class="settings-tab-panel" id="panel-billing" style="display: none;">
+                    <h2>Billing</h2>
+                    <div class="billing-container">
+                        <div class="billing-balance">
+                            <span class="billing-balance-label">Current Balance</span>
+                            <span class="billing-balance-value">$125.00</span>
+                        </div>
+                        <div class="billing-section">
+                            <h3>Quick Top-Up</h3>
+                            <div class="billing-presets">
+                                <button class="billing-preset">$10</button>
+                                <button class="billing-preset">$25</button>
+                                <button class="billing-preset active">$50</button>
+                                <button class="billing-preset">$100</button>
+                            </div>
+                        </div>
+                        <div class="billing-section">
+                            <h3>Custom Amount</h3>
+                            <div class="billing-custom-input">
+                                <span class="billing-currency">$</span>
+                                <input type="number" placeholder="0.00" step="0.01" min="1">
+                            </div>
+                        </div>
+                        <div class="billing-section">
+                            <h3>Payment Method</h3>
+                            <div class="billing-saved-card active">
+                                <input type="radio" name="card" checked>
+                                <span class="card-brand">VISA</span>
+                                <span class="card-dots">&#8226;&#8226;&#8226;&#8226;</span>
+                                <span class="card-last4">4242</span>
+                                <span class="card-exp">12/27</span>
+                            </div>
+                        </div>
+                        <button class="billing-pay-button">Pay $50.00</button>
+                        <div class="billing-stripe-badge">Secured by <strong>Stripe</strong></div>
+                    </div>
+                </div>
+
+                <!-- Notifications Tab -->
+                <div class="settings-tab-panel" id="panel-notifications" style="display: none;">
+                    <div class="coming-soon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                        <span>Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Panel (Right Side) -->
+        <aside class="leaderboard-panel">
+            <div class="panel-header">
+                <h3>Top Performers</h3>
+                <svg class="trophy-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 3h14c.55 0 1 .45 1 1v3c0 2.21-1.79 4-4 4h-.1c-.46 1.64-1.89 2.88-3.65 3.16V17h4v2H7v-2h4v-2.84c-1.76-.28-3.19-1.52-3.65-3.16H7c-2.21 0-4-1.79-4-4V4c0-.55.45-1 1-1zm0 2v2c0 1.1.9 2 2 2h.28c-.04-.16-.07-.33-.07-.5V5H5zm14 0h-2.21v3.5c0 .17-.03.34-.07.5H17c1.1 0 2-.9 2-2V5zM9 5v3.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5H9z"/>
+                </svg>
+            </div>
+            <div class="leaderboard-list">
+                <div class="leaderboard-item rank-1">
+                    <span class="rank">#1</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=3" alt="JV"></div>
+                    <div class="agent-info"><span class="agent-name">Joe Vazquez</span><span class="agent-stats">156 calls ~ $12,400</span></div>
+                    <span class="agent-revenue">$12,400</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#2</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=8" alt="CB"></div>
+                    <div class="agent-info"><span class="agent-name">Cole Bingham</span><span class="agent-stats">134 calls ~ $10,200</span></div>
+                    <span class="agent-revenue">$10,200</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#3</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=5" alt="AM"></div>
+                    <div class="agent-info"><span class="agent-name">Anne Mitchell</span><span class="agent-stats">121 calls ~ $9,800</span></div>
+                    <span class="agent-revenue">$9,800</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#4</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=12" alt="MC"></div>
+                    <div class="agent-info"><span class="agent-name">Marcus Chen</span><span class="agent-stats">108 calls ~ $8,500</span></div>
+                    <span class="agent-revenue">$8,500</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#5</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=9" alt="SW"></div>
+                    <div class="agent-info"><span class="agent-name">Sarah Williams</span><span class="agent-stats">95 calls ~ $7,200</span></div>
+                    <span class="agent-revenue">$7,200</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#6</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=15" alt="DP"></div>
+                    <div class="agent-info"><span class="agent-name">David Park</span><span class="agent-stats">87 calls ~ $6,800</span></div>
+                    <span class="agent-revenue">$6,800</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#7</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=25" alt="ER"></div>
+                    <div class="agent-info"><span class="agent-name">Emma Rodriguez</span><span class="agent-stats">79 calls ~ $5,900</span></div>
+                    <span class="agent-revenue">$5,900</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">#8</span>
+                    <div class="agent-avatar"><img src="https://i.pravatar.cc/36?img=53" alt="MT"></div>
+                    <div class="agent-info"><span class="agent-name">Michael Torres</span><span class="agent-stats">72 calls ~ $5,400</span></div>
+                    <span class="agent-revenue">$5,400</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Incoming Call Modal -->
+    <div class="call-modal" id="callModal">
+        <div class="call-modal-content">
+            <div class="call-animation">
+                <div class="call-ring"></div>
+                <div class="call-ring"></div>
+                <div class="call-ring"></div>
+                <div class="call-icon-container">
+                    <svg class="call-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="call-info">
+                <span class="call-label">INCOMING CALL</span>
+                <span class="call-location">California, USA</span>
+            </div>
+            <div class="call-actions">
+                <button class="call-btn accept" id="acceptCall">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    Accept Call
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

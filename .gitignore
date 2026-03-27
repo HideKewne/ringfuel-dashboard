@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.secrets
+credentials.json
+*.log
+.DS_Store
+.vite/
